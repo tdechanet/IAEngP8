@@ -9,6 +9,9 @@ numpy = "*"
 pillow = "*"
 matplotlib = "*"
 torchvision = "*"
+tqdm = "*"
+seaborn = "*"
+polars = "*"
 
 [dev-packages]
 ipykernel = "*"
