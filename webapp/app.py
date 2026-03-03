@@ -18,7 +18,6 @@ MAPPING_ARRAY = np.array([
 
 st.set_page_config(page_title="Future Vision Transport", layout="wide")
 st.title("Démo : Segmentation Cityscapes")
-st.write("Interface de test pour le système de décision (Équipe Laura)")
 
 available_images = [f for f in os.listdir(SAMPLE_DIR) if f.endswith("leftImg8bit.png")]
 
@@ -55,19 +54,17 @@ else:
 
 	with col3:
 		st.subheader("Prédiction de l'IA")
-		if st.button("Lancer la prédiction"):
-			with st.spinner("L'API charge..."):
-				try:
-					with open(img_path, "rb") as f:
-						files = {"file": (selected_img_name, f, "image/png")}
-						response = requests.post(API_URL, files=files)
-					
-					if response.status_code == 200:
+		with st.spinner("L'API charge..."):
+			try:
+				with open(img_path, "rb") as f:
+					files = {"file": (selected_img_name, f, "image/png")}
+					response = requests.post(API_URL, files=files)
+				
+				if response.status_code == 200:
 
-						pred_image = Image.open(io.BytesIO(response.content))
-						st.image(pred_image, width="content")
-						st.success("Prédiction réussie !")
-					else:
-						st.error(f"Erreur de l'API : {response.status_code}")
-				except requests.exceptions.ConnectionError:
-					st.error("Impossible de contacter l'API. Est-elle bien lancée sur le port 8000 ?")
+					pred_image = Image.open(io.BytesIO(response.content))
+					st.image(pred_image, width="content")
+				else:
+					st.error(f"Erreur de l'API : {response.status_code}")
+			except requests.exceptions.ConnectionError:
+				st.error("Impossible de contacter l'API. Est-elle bien lancée sur le port 8000 ?")
