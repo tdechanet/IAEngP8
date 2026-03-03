@@ -12,6 +12,8 @@ torchvision = "*"
 tqdm = "*"
 seaborn = "*"
 polars = "*"
+streamlit = "*"
+requests = "*"
 
 [dev-packages]
 ipykernel = "*"
