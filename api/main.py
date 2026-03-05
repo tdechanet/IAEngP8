@@ -13,7 +13,7 @@ CITYSCAPES_PALETTE = np.array([
 ], dtype=np.uint8)
 
 BASE_DIR = Path(__file__).resolve().parent
-MODEL_PATH = BASE_DIR.parent / "models" / "mobilenet_v2.onnx"
+MODEL_PATH = BASE_DIR.parent / "api" / "models" / "mobilenet_v2.onnx"
 
 ort_session = None
 
