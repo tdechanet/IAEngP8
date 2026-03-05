@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Récupération du code
         uses: actions/checkout@v4
+        with:
+          lfs: true
 
       - name: Configuration de Python
         uses: actions/setup-python@v4
