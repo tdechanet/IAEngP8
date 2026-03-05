@@ -5,18 +5,22 @@ from PIL import Image
 import numpy as np
 import io
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 CITYSCAPES_PALETTE = np.array([
     [0, 0, 0], [128, 64, 128], [70, 70, 70], [220, 220, 0], 
     [107, 142, 35], [70, 130, 180], [220, 20, 60], [0, 0, 142]
 ], dtype=np.uint8)
 
+BASE_DIR = Path(__file__).resolve().parent
+MODEL_PATH = BASE_DIR.parent / "outputs" / "models" / "mobilenet_v2.onnx"
+
 ort_session = None
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     global ort_session
-    ort_session = ort.InferenceSession("outputs/models/mobilenet_v2.onnx")
+    ort_session = ort.InferenceSession(MODEL_PATH)
     yield
 
 app = FastAPI(lifespan=lifespan, title="Cityscapes Segmentation API")
