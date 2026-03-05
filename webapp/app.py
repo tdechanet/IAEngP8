@@ -5,8 +5,9 @@ import os
 import io
 import numpy as np
 
-API_URL = "http://127.0.0.1:8000/predict"
-SAMPLE_DIR = "test_images"
+API_URL = "https://project8api-h8bgdghmaeh7cnch.francecentral-01.azurewebsites.net/predict"
+# API_URL = "http://127.0.0.1:8000/predict"
+SAMPLE_DIR = "webapp/test_images"
 
 CITYSCAPES_PALETTE = np.array([
 	[0, 0, 0], [128, 64, 128], [70, 70, 70], [220, 220, 0], [107, 142, 35], [70, 130, 180], [220, 20, 60], [0, 0, 142]
