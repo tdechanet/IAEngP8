@@ -3,7 +3,7 @@ name: Deploiement API sur Azure
 on:
   push:
     branches:
-      - main
+      - deploy
 
 jobs:
   build-and-deploy:

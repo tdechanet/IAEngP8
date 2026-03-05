@@ -16,7 +16,7 @@ ort_session = None
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     global ort_session
-    ort_session = ort.InferenceSession("../outputs/models/mobilenet_v2.onnx")
+    ort_session = ort.InferenceSession("outputs/models/mobilenet_v2.onnx")
     yield
 
 app = FastAPI(lifespan=lifespan, title="Cityscapes Segmentation API")
